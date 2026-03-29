@@ -14,27 +14,36 @@ document.addEventListener('DOMContentLoaded', function() {
       img.alt = element.alt || '';
       lbBody.appendChild(img);
     } else {
-      // Mermaid SVG — 복제해서 크게 표시
-      var clone = element.cloneNode(true);
-      clone.style.maxWidth = '92vw';
-      clone.style.maxHeight = '85vh';
-      clone.style.width = 'auto';
-      clone.style.height = 'auto';
-      clone.style.background = '#fff';
-      clone.style.borderRadius = '12px';
-      clone.style.padding = '2rem';
-      clone.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)';
-      // SVG 내부 크기 제거해서 확대
-      var svgs = clone.querySelectorAll('svg');
-      svgs.forEach(function(svg) {
-        svg.removeAttribute('width');
-        svg.removeAttribute('height');
-        svg.style.width = '100%';
-        svg.style.height = 'auto';
-        svg.style.maxWidth = '88vw';
-        svg.style.maxHeight = '80vh';
-      });
-      lbBody.appendChild(clone);
+      // Mermaid SVG — SVG를 추출해서 viewBox 기반으로 확대
+      var svg = element.querySelector('svg');
+      if (!svg) return;
+      var clone = svg.cloneNode(true);
+      // viewBox 확보
+      var vb = clone.getAttribute('viewBox');
+      if (!vb) {
+        var w = parseFloat(clone.getAttribute('width')) || 800;
+        var h = parseFloat(clone.getAttribute('height')) || 400;
+        clone.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      }
+      // 고정 크기 제거 → 컨테이너에 맞게 확대
+      clone.removeAttribute('width');
+      clone.removeAttribute('height');
+      clone.removeAttribute('style');
+      clone.style.width = '100%';
+      clone.style.height = '100%';
+      clone.style.maxWidth = '90vw';
+      clone.style.maxHeight = '82vh';
+
+      var wrapper = document.createElement('div');
+      wrapper.style.background = '#fff';
+      wrapper.style.borderRadius = '16px';
+      wrapper.style.padding = '2rem';
+      wrapper.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)';
+      wrapper.style.maxWidth = '92vw';
+      wrapper.style.maxHeight = '86vh';
+      wrapper.style.overflow = 'auto';
+      wrapper.appendChild(clone);
+      lbBody.appendChild(wrapper);
     }
     lbCaption.textContent = caption || '';
     lbCaption.style.display = caption ? 'block' : 'none';
@@ -49,16 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.overflow = '';
   }
 
-  // 이미지 클릭
   document.addEventListener('click', function(e) {
     var img = e.target.closest('.md-content img:not(.twemoji):not(.emojione)');
     if (img) { e.preventDefault(); openLightbox(img, img.alt); return; }
-    // Mermaid 다이어그램 클릭
     var mermaid = e.target.closest('.mermaid');
     if (mermaid && mermaid.querySelector('svg')) {
       e.preventDefault();
-      var title = mermaid.closest('.md-content') ? '다이어그램 (클릭하여 닫기)' : '';
-      openLightbox(mermaid, title);
+      openLightbox(mermaid, '클릭하여 닫기');
     }
   });
 
