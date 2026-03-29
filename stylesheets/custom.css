@@ -52,18 +52,18 @@
   transform: scale(0.9); transition: transform 0.3s ease;
 }
 .ef-lightbox.active .ef-lightbox-body > img { transform: scale(1); }
-/* SVG 라이트박스 — viewBox 기반 확대 */
+/* SVG 라이트박스 — viewBox 기반 최대 확대 */
 .ef-lightbox-body .ef-svg-wrapper {
-  background: #fff; border-radius: 16px; padding: 2rem;
+  background: #fff; border-radius: 16px; padding: 1.5rem 2rem;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  max-width: 92vw; max-height: 86vh; overflow: auto;
+  width: 94vw; max-height: 90vh; overflow: auto;
   display: flex; align-items: center; justify-content: center;
   transform: scale(0.9); transition: transform 0.3s ease;
 }
 .ef-lightbox.active .ef-svg-wrapper { transform: scale(1); }
 .ef-lightbox-body .ef-svg-wrapper svg {
   width: 100% !important; height: auto !important;
-  max-height: 78vh; min-width: 60vw;
+  max-height: 84vh; min-width: 88vw;
 }
 /* 캡션 */
 .ef-lightbox-caption {
