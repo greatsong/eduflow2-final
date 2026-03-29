@@ -14,34 +14,23 @@ document.addEventListener('DOMContentLoaded', function() {
       img.alt = element.alt || '';
       lbBody.appendChild(img);
     } else {
-      // Mermaid SVG — SVG를 추출해서 viewBox 기반으로 확대
+      // Mermaid SVG
       var svg = element.querySelector('svg');
       if (!svg) return;
       var clone = svg.cloneNode(true);
-      // viewBox 확보
-      var vb = clone.getAttribute('viewBox');
-      if (!vb) {
-        var w = parseFloat(clone.getAttribute('width')) || 800;
-        var h = parseFloat(clone.getAttribute('height')) || 400;
+      // viewBox가 없으면 생성
+      if (!clone.getAttribute('viewBox')) {
+        var w = parseFloat(clone.getAttribute('width')) || clone.getBBox && svg.getBBox().width || 800;
+        var h = parseFloat(clone.getAttribute('height')) || svg.getBBox && svg.getBBox().height || 400;
         clone.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       }
-      // 고정 크기 제거 → 컨테이너에 맞게 확대
+      // 고정 크기 제거 → CSS로 확대
       clone.removeAttribute('width');
       clone.removeAttribute('height');
-      clone.removeAttribute('style');
-      clone.style.width = '100%';
-      clone.style.height = '100%';
-      clone.style.maxWidth = '90vw';
-      clone.style.maxHeight = '82vh';
+      clone.style.cssText = '';
 
       var wrapper = document.createElement('div');
-      wrapper.style.background = '#fff';
-      wrapper.style.borderRadius = '16px';
-      wrapper.style.padding = '2rem';
-      wrapper.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)';
-      wrapper.style.maxWidth = '92vw';
-      wrapper.style.maxHeight = '86vh';
-      wrapper.style.overflow = 'auto';
+      wrapper.className = 'ef-svg-wrapper';
       wrapper.appendChild(clone);
       lbBody.appendChild(wrapper);
     }
@@ -59,12 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   document.addEventListener('click', function(e) {
+    // 이미지 클릭 (Mermaid 내부 이미지 제외)
     var img = e.target.closest('.md-content img:not(.twemoji):not(.emojione)');
-    if (img) { e.preventDefault(); openLightbox(img, img.alt); return; }
+    if (img && !e.target.closest('.mermaid')) {
+      e.preventDefault();
+      openLightbox(img, img.alt);
+      return;
+    }
+    // Mermaid SVG 클릭 — SVG가 렌더링된 경우만
     var mermaid = e.target.closest('.mermaid');
     if (mermaid && mermaid.querySelector('svg')) {
       e.preventDefault();
-      openLightbox(mermaid, '클릭하여 닫기');
+      openLightbox(mermaid, '');
     }
   });
 
