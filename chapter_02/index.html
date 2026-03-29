@@ -1267,27 +1267,27 @@
 </blockquote>
 <p>이 순환 과정이 수백만 번 반복되면서 AI는 점점 더 똑똑해집니다.</p>
 <hr />
-<p><img alt="A clear three-step diagram showing AI learning process: (1) Data Collection with icons of images, text, and numbers flowing in; (2) Model Training with a neural network diagram and feedback arrows showing error correction; (3) Prediction/Output with a checkmark. Arrows connect each step in a cycle. Use a clean, educational infographic style with bright colors suitable for high school students." src="../images/ch_2_img1.png" /></p>
+<p><img alt="A clear three-step diagram showing AI learning process: (1) Data Collection with icons of images, text, and numbers flowing in; (2) Model Training with a neural network diagram and feedback arrows showing error correction; (3) Prediction/Output with a checkmark. Arrows connect each step in a cycle. Use a clean, educational infographic style with bright colors suitable for high school students." src="../images/ch_2_img1.jpg" /></p>
 <hr />
 <h2 id="2_1">2. 세 가지 학습 유형<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
 <p>AI가 학습하는 방식은 크게 세 가지로 나뉩니다. 각각의 방식은 목적과 데이터의 형태에 따라 선택됩니다.</p>
-<div class="mermaid">mindmap
-  root((AI 학습 유형))
-    지도학습
-      정답 데이터 있음
-      분류 문제
-      예측 문제
-      예: 스팸 메일 분류
-    비지도학습
-      정답 데이터 없음
-      군집화
-      패턴 발견
-      예: 고객 분류
-    강화학습
-      보상과 벌칙
-      시행착오
-      최적 행동 탐색
-      예: 게임 AI</div>
+<div class="mermaid">flowchart LR
+    NLP["🗣️ 자연어처리&lt;br/&gt;NLP"] --&gt; MT["🌐 기계 번역"]
+    NLP --&gt; CB["💬 챗봇·대화"]
+    NLP --&gt; TA["📊 텍스트 분석"]
+    NLP --&gt; SR["🎤 음성 인식"]
+    NLP --&gt; SE["🔍 검색 엔진"]
+    MT --&gt; MT1["파파고"] &amp; MT2["구글 번역"] &amp; MT3["DeepL"]
+    CB --&gt; CB1["ChatGPT"] &amp; CB2["클로드"] &amp; CB3["Gemini"]
+    TA --&gt; TA1["감성 분석"] &amp; TA2["요약 생성"] &amp; TA3["키워드 추출"]
+    SR --&gt; SR1["시리"] &amp; SR2["빅스비"] &amp; SR3["클로바"]
+    SE --&gt; SE1["네이버"] &amp; SE2["구글"] &amp; SE3["의미 기반"]
+    style NLP fill:#4F46E5,color:#fff,stroke:#3730A3,stroke-width:3px
+    style MT fill:#0EA5E9,color:#fff,stroke:#0284C7,stroke-width:2px
+    style CB fill:#10B981,color:#fff,stroke:#059669,stroke-width:2px
+    style TA fill:#F59E0B,color:#fff,stroke:#D97706,stroke-width:2px
+    style SR fill:#8B5CF6,color:#fff,stroke:#7C3AED,stroke-width:2px
+    style SE fill:#EF4444,color:#fff,stroke:#DC2626,stroke-width:2px</div>
 <hr />
 <h3 id="21-supervised-learning">2.1 지도학습 (Supervised Learning)<a class="headerlink" href="#21-supervised-learning" title="Permanent link">&para;</a></h3>
 <h4 id="_3">🏫 "선생님이 정답을 알려주며 가르치는 방식"<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -1424,7 +1424,7 @@
 - 🤖 <strong>로봇 공학:</strong> 로봇이 스스로 넘어지지 않고 걷는 방법을 터득
 - 💬 <strong>ChatGPT 등 생성형 AI:</strong> 사람의 피드백을 보상으로 삼아 더 나은 답변 학습 (RLHF)</p>
 <hr />
-<p><img alt="A side-by-side comparison illustration of three AI learning types: (1) Supervised Learning shown as a teacher with labeled flashcards teaching a robot student; (2) Unsupervised Learning shown as a robot independently sorting unlabeled objects into groups; (3) Reinforcement Learning shown as a robot playing a video game, with reward/penalty pop-ups appearing. Use a colorful, engaging style appropriate for high school students." src="../images/ch_2_img2.png" /></p>
+<p><img alt="A side-by-side comparison illustration of three AI learning types: (1) Supervised Learning shown as a teacher with labeled flashcards teaching a robot student; (2) Unsupervised Learning shown as a robot independently sorting unlabeled objects into groups; (3) Reinforcement Learning shown as a robot playing a video game, with reward/penalty pop-ups appearing. Use a colorful, engaging style appropriate for high school students." src="../images/ch_2_img2.jpg" /></p>
 <hr />
 <h2 id="3">3. 세 가지 학습 유형 종합 비교<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>지금까지 배운 세 가지 학습 유형을 한눈에 비교해봅시다.</p>

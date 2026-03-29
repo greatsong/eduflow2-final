@@ -1317,7 +1317,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="A side-by-side conceptual illustration comparing a human brain and a computer chip/neural network, showing how artificial intelligence mimics human cognitive abilities like learning, reasoning, and language understanding. Use friendly, colorful cartoon style suitable for high school students." src="../images/ch_1_img1.png" /></p>
+<p><img alt="A side-by-side conceptual illustration comparing a human brain and a computer chip/neural network, showing how artificial intelligence mimics human cognitive abilities like learning, reasoning, and language understanding. Use friendly, colorful cartoon style suitable for high school students." src="../images/ch_1_img1.jpg" /></p>
 <h3 id="12-ai-3">1.2 AI의 3가지 유형<a class="headerlink" href="#12-ai-3" title="Permanent link">&para;</a></h3>
 <p>AI는 그 능력 범위에 따라 크게 3가지로 나눌 수 있습니다.</p>
 <div class="mermaid">graph TD
@@ -1393,7 +1393,7 @@
 - <strong>AI</strong> = 피자 가게 전체 (음식 만들기라는 큰 목표)
 - <strong>머신러닝</strong> = 피자 요리사 (데이터로 레시피를 스스로 익히는 방법)
 - <strong>딥러닝</strong> = 최첨단 자동 피자 로봇 (요리사 중에서도 가장 복잡하고 강력한 방법)</p>
-<p><img alt="A nested circles diagram (Venn-style) showing the relationship between Artificial Intelligence (outermost), Machine Learning (middle), and Deep Learning (innermost), with real-world application examples labeled in each layer such as chess programs in AI, spam filters in ML, and image recognition in DL. Use bright, educational infographic style." src="../images/ch_1_img2.png" /></p>
+<p><img alt="A nested circles diagram (Venn-style) showing the relationship between Artificial Intelligence (outermost), Machine Learning (middle), and Deep Learning (innermost), with real-world application examples labeled in each layer such as chess programs in AI, spam filters in ML, and image recognition in DL. Use bright, educational infographic style." src="../images/ch_1_img2.jpg" /></p>
 <h3 id="32-machine-learning">3.2 머신러닝(Machine Learning)이란?<a class="headerlink" href="#32-machine-learning" title="Permanent link">&para;</a></h3>
 <p><strong>머신러닝(ML)</strong> 이란 컴퓨터가 명시적인 프로그래밍 없이 <strong>데이터를 통해 스스로 학습</strong>하고 성능을 개선하는 기술입니다.</p>
 <p>전통적인 프로그래밍과 머신러닝의 차이를 비교해볼까요?</p>
@@ -1497,33 +1497,28 @@
 <p><strong>자연어처리(Natural Language Processing, NLP)</strong> 는 컴퓨터가 인간의 언어(자연어)를 이해하고, 분석하고, 생성할 수 있게 하는 AI 기술입니다.</p>
 <p>여기서 "자연어"란 우리가 일상에서 사용하는 한국어, 영어 같은 언어를 뜻합니다. (컴퓨터가 원래 쓰는 0과 1의 기계어와 반대 개념!)</p>
 <p><strong>NLP의 주요 응용 분야:</strong></p>
-<div class="mermaid">mindmap
-  root((자연어처리\nNLP))
-    기계 번역
-      파파고
-      구글 번역
-      DeepL
-    챗봇·대화
-      ChatGPT
-      클로드
-      Gemini
-    텍스트 분석
-      감성 분석
-      요약 생성
-      키워드 추출
-    음성 인식
-      시리 Siri
-      빅스비
-      네이버 클로바
-    검색 엔진
-      네이버 검색
-      구글 검색
-      의미 기반 검색</div>
+<div class="mermaid">flowchart LR
+    NLP["🗣️ 자연어처리&lt;br/&gt;NLP"] --&gt; MT["🌐 기계 번역"]
+    NLP --&gt; CB["💬 챗봇·대화"]
+    NLP --&gt; TA["📊 텍스트 분석"]
+    NLP --&gt; SR["🎤 음성 인식"]
+    NLP --&gt; SE["🔍 검색 엔진"]
+    MT --&gt; MT1["파파고"] &amp; MT2["구글 번역"] &amp; MT3["DeepL"]
+    CB --&gt; CB1["ChatGPT"] &amp; CB2["클로드"] &amp; CB3["Gemini"]
+    TA --&gt; TA1["감성 분석"] &amp; TA2["요약 생성"] &amp; TA3["키워드 추출"]
+    SR --&gt; SR1["시리"] &amp; SR2["빅스비"] &amp; SR3["클로바"]
+    SE --&gt; SE1["네이버"] &amp; SE2["구글"] &amp; SE3["의미 기반"]
+    style NLP fill:#4F46E5,color:#fff,stroke:#3730A3,stroke-width:3px
+    style MT fill:#0EA5E9,color:#fff,stroke:#0284C7,stroke-width:2px
+    style CB fill:#10B981,color:#fff,stroke:#059669,stroke-width:2px
+    style TA fill:#F59E0B,color:#fff,stroke:#D97706,stroke-width:2px
+    style SR fill:#8B5CF6,color:#fff,stroke:#7C3AED,stroke-width:2px
+    style SE fill:#EF4444,color:#fff,stroke:#DC2626,stroke-width:2px</div>
 <hr />
 <h2 id="4-ai">4. 일상 속 AI 활용 사례<a class="headerlink" href="#4-ai" title="Permanent link">&para;</a></h2>
 <h3 id="41-ai">4.1 우리 주변의 AI<a class="headerlink" href="#41-ai" title="Permanent link">&para;</a></h3>
 <p>AI는 더 이상 공상과학 영화 속 이야기가 아닙니다. 지금 이 순간에도 우리 일상 곳곳에서 AI가 작동하고 있습니다.</p>
-<p><img alt="An illustrated daily life scene of a Korean high school student's day, showing various AI touchpoints: face ID unlock on smartphone in the morning, recommendation algorithm on video platform, voice assistant, navigation app, online shopping recommendation, and spam filter. Each touchpoint is labeled with the type of AI technology being used. Colorful and engaging infographic style." src="../images/ch_1_img3.png" /></p>
+<p><img alt="An illustrated daily life scene of a Korean high school student's day, showing various AI touchpoints: face ID unlock on smartphone in the morning, recommendation algorithm on video platform, voice assistant, navigation app, online shopping recommendation, and spam filter. Each touchpoint is labeled with the type of AI technology being used. Colorful and engaging infographic style." src="../images/ch_1_img3.jpg" /></p>
 <table>
 <thead>
 <tr>
@@ -1659,32 +1654,25 @@
 <hr />
 <h2 id="5">5. 정리 및 핵심 개념 요약<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="_3">이번 장에서 배운 것들 🎓<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="mermaid">mindmap
-  root((1장 핵심 개념))
-    인공지능 AI
-      인간 지능을 모방한 컴퓨터 기술
-      약한 AI / 강한 AI / 초인공지능
-      현재는 모두 약한 AI 단계
-    AI의 역사
-      1956년 공식 탄생
-      두 번의 AI 겨울
-      2022년 ChatGPT로 대중화
-    머신러닝 ML
-      데이터로 스스로 학습
-      지도학습·비지도학습·강화학습
-      AI의 하위 분야
-    딥러닝 DL
-      신경망 기반 학습
-      이미지·음성·언어 처리에 강점
-      머신러닝의 하위 분야
-    자연어처리 NLP
-      인간 언어를 이해·생성
-      번역·챗봇·검색에 활용
-      ChatGPT의 핵심 기술
-    일상 속 AI
-      스마트폰·추천시스템
-      내비게이션·의료진단
-      이미 우리 삶 속에 존재</div>
+<div class="mermaid">flowchart TD
+    ROOT["📖 1장 핵심 개념"] --&gt; AI["🧠 인공지능 AI"]
+    ROOT --&gt; HIST["📅 AI의 역사"]
+    ROOT --&gt; ML["📊 머신러닝 ML"]
+    ROOT --&gt; DL["🔬 딥러닝 DL"]
+    AI --&gt; AI1["인간 지능을 모방한 기술"]
+    AI --&gt; AI2["약한 AI / 강한 AI / 초인공지능"]
+    HIST --&gt; HIST1["1956년 공식 탄생"]
+    HIST --&gt; HIST2["두 번의 AI 겨울"]
+    HIST --&gt; HIST3["2022년 ChatGPT 대중화"]
+    ML --&gt; ML1["데이터로 스스로 학습"]
+    ML --&gt; ML2["지도/비지도/강화학습"]
+    DL --&gt; DL1["신경망 기반 학습"]
+    DL --&gt; DL2["이미지·음성·언어 처리"]
+    style ROOT fill:#1e1b4b,color:#fff,stroke:#4F46E5,stroke-width:3px
+    style AI fill:#4F46E5,color:#fff,stroke:#3730A3,stroke-width:2px
+    style HIST fill:#0EA5E9,color:#fff,stroke:#0284C7,stroke-width:2px
+    style ML fill:#10B981,color:#fff,stroke:#059669,stroke-width:2px
+    style DL fill:#8B5CF6,color:#fff,stroke:#7C3AED,stroke-width:2px</div>
 <h3 id="_4">핵심 용어 정리<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
