@@ -20,3 +20,42 @@
 .md-header{box-shadow:var(--ef-shadow)}
 .md-footer-meta{background:linear-gradient(135deg,#1e293b,#0f172a)}
 @media print{.md-typeset img{box-shadow:none;border:1px solid #ddd}.md-typeset .admonition{box-shadow:none;border:1px solid #ddd}}
+
+/* 이미지 클릭 라이트박스 */
+.md-content img:not(.twemoji):not(.emojione) {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+}
+.md-content img:not(.twemoji):not(.emojione):hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.ef-lightbox {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.92); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  cursor: zoom-out; opacity: 0; transition: opacity 0.3s ease;
+}
+.ef-lightbox.active { opacity: 1; }
+.ef-lightbox img {
+  max-width: 92vw; max-height: 88vh;
+  object-fit: contain; border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: scale(0.9); transition: transform 0.3s ease;
+}
+.ef-lightbox.active img { transform: scale(1); }
+.ef-lightbox-caption {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.85); font-size: 0.95rem; text-align: center;
+  max-width: 80vw; padding: 8px 20px;
+  background: rgba(0,0,0,0.5); border-radius: 8px;
+}
+.ef-lightbox-close {
+  position: absolute; top: 20px; right: 28px;
+  color: #fff; font-size: 2rem; cursor: pointer;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; background: rgba(255,255,255,0.1);
+  transition: background 0.2s;
+}
+.ef-lightbox-close:hover { background: rgba(255,255,255,0.25); }
