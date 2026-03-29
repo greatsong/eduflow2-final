@@ -1,0 +1,173 @@
+/* EduFlow 2 Custom Stylesheet */
+
+/* ==============================
+   1. 타이포그래피 & 전체 레이아웃
+   ============================== */
+:root {
+  --ef-primary: #2563eb;
+  --ef-primary-light: #dbeafe;
+  --ef-accent: #0891b2;
+  --ef-accent-light: #cffafe;
+  --ef-warm: #f59e0b;
+  --ef-warm-light: #fef3c7;
+  --ef-success: #059669;
+  --ef-success-light: #d1fae5;
+  --ef-text: #1e293b;
+  --ef-text-muted: #64748b;
+  --ef-bg-subtle: #f8fafc;
+  --ef-border: #e2e8f0;
+  --ef-radius: 12px;
+  --ef-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --ef-shadow-lg: 0 4px 16px rgba(0,0,0,0.1), 0 8px 32px rgba(0,0,0,0.06);
+}
+
+[data-md-color-scheme="slate"] {
+  --ef-primary: #60a5fa;
+  --ef-primary-light: #1e3a5f;
+  --ef-accent: #22d3ee;
+  --ef-accent-light: #164e63;
+  --ef-warm: #fbbf24;
+  --ef-warm-light: #451a03;
+  --ef-success: #34d399;
+  --ef-success-light: #064e3b;
+  --ef-text: #e2e8f0;
+  --ef-text-muted: #94a3b8;
+  --ef-bg-subtle: #1e293b;
+  --ef-border: #334155;
+  --ef-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+  --ef-shadow-lg: 0 4px 16px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.md-typeset {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset p {
+  margin-bottom: 1em;
+}
+
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8em;
+  background: linear-gradient(135deg, var(--ef-primary), var(--ef-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--ef-border);
+  margin-top: 2em;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  color: var(--ef-primary);
+}
+
+/* ==============================
+   2. 이미지 카드 스타일
+   ============================== */
+.md-typeset img {
+  border-radius: var(--ef-radius);
+  box-shadow: var(--ef-shadow-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1.5em auto;
+  display: block;
+  max-width: 100%;
+}
+
+.md-typeset img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* 이미지 캡션 */
+.md-typeset img + em,
+.md-typeset figure figcaption {
+  display: block;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--ef-text-muted);
+  margin-top: -0.8em;
+  margin-bottom: 1.5em;
+  font-style: italic;
+}
+
+/* ==============================
+   3. Admonition 커스텀
+   ============================== */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--ef-radius);
+  box-shadow: var(--ef-shadow);
+  border: none;
+  overflow: hidden;
+}
+
+.md-typeset .admonition.info,
+.md-typeset .admonition.abstract {
+  background: linear-gradient(135deg, var(--ef-primary-light), transparent);
+  border-left: 4px solid var(--ef-primary);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset .admonition.example {
+  background: linear-gradient(135deg, var(--ef-success-light), transparent);
+  border-left: 4px solid var(--ef-success);
+}
+
+.md-typeset .admonition.warning {
+  background: linear-gradient(135deg, var(--ef-warm-light), transparent);
+  border-left: 4px solid var(--ef-warm);
+}
+
+/* ==============================
+   4. 코드 블록
+   ============================== */
+.md-typeset pre {
+  border-radius: var(--ef-radius);
+  box-shadow: var(--ef-shadow);
+}
+
+.md-typeset code {
+  border-radius: 4px;
+  font-size: 0.88em;
+  padding: 0.15em 0.4em;
+}
+
+/* ==============================
+   5. 테이블
+   ============================== */
+.md-typeset table:not([class]) {
+  border-radius: var(--ef-radius);
+  overflow: hidden;
+  box-shadow: var(--ef-shadow);
+  border: 1px solid var(--ef-border);
+}
+
+.md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, var(--ef-primary), var(--ef-accent));
+  color: white;
+  font-weight: 600;
+}
+
+/* ==============================
+   6. Footer
+   ============================== */
+.md-footer-meta {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+/* ==============================
+   7. 인쇄
+   ============================== */
+@media print {
+  .md-typeset img { box-shadow: none; border: 1px solid #ddd; }
+  .md-typeset .admonition { box-shadow: none; border: 1px solid #ddd; }
+}
