@@ -59,3 +59,9 @@
   transition: background 0.2s;
 }
 .ef-lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+/* Mermaid 다이어그램 클릭 가능 표시 */
+.mermaid { cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s; border-radius: 8px; }
+.mermaid:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.ef-lightbox-body { display: flex; align-items: center; justify-content: center; }
+.ef-lightbox-body > img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }

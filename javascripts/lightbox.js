@@ -1,18 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 라이트박스 오버레이 생성
   var overlay = document.createElement('div');
   overlay.className = 'ef-lightbox';
-  overlay.innerHTML = '<span class="ef-lightbox-close">&times;</span><img src="" alt=""><div class="ef-lightbox-caption"></div>';
+  overlay.innerHTML = '<span class="ef-lightbox-close">&times;</span><div class="ef-lightbox-body"></div><div class="ef-lightbox-caption"></div>';
   document.body.appendChild(overlay);
-
-  var lbImg = overlay.querySelector('img');
+  var lbBody = overlay.querySelector('.ef-lightbox-body');
   var lbCaption = overlay.querySelector('.ef-lightbox-caption');
-  var lbClose = overlay.querySelector('.ef-lightbox-close');
 
-  function openLightbox(src, alt) {
-    lbImg.src = src;
-    lbCaption.textContent = alt || '';
-    lbCaption.style.display = alt ? 'block' : 'none';
+  function openLightbox(element, caption) {
+    lbBody.innerHTML = '';
+    if (element.tagName === 'IMG') {
+      var img = document.createElement('img');
+      img.src = element.src;
+      img.alt = element.alt || '';
+      lbBody.appendChild(img);
+    } else {
+      // Mermaid SVG — 복제해서 크게 표시
+      var clone = element.cloneNode(true);
+      clone.style.maxWidth = '92vw';
+      clone.style.maxHeight = '85vh';
+      clone.style.width = 'auto';
+      clone.style.height = 'auto';
+      clone.style.background = '#fff';
+      clone.style.borderRadius = '12px';
+      clone.style.padding = '2rem';
+      clone.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)';
+      // SVG 내부 크기 제거해서 확대
+      var svgs = clone.querySelectorAll('svg');
+      svgs.forEach(function(svg) {
+        svg.removeAttribute('width');
+        svg.removeAttribute('height');
+        svg.style.width = '100%';
+        svg.style.height = 'auto';
+        svg.style.maxWidth = '88vw';
+        svg.style.maxHeight = '80vh';
+      });
+      lbBody.appendChild(clone);
+    }
+    lbCaption.textContent = caption || '';
+    lbCaption.style.display = caption ? 'block' : 'none';
     overlay.style.display = 'flex';
     requestAnimationFrame(function() { overlay.classList.add('active'); });
     document.body.style.overflow = 'hidden';
@@ -20,19 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function closeLightbox() {
     overlay.classList.remove('active');
-    setTimeout(function() { overlay.style.display = 'none'; lbImg.src = ''; }, 300);
+    setTimeout(function() { overlay.style.display = 'none'; lbBody.innerHTML = ''; }, 300);
     document.body.style.overflow = '';
   }
 
-  // 이미지 클릭 이벤트 (이모지 제외)
+  // 이미지 클릭
   document.addEventListener('click', function(e) {
     var img = e.target.closest('.md-content img:not(.twemoji):not(.emojione)');
-    if (img) { e.preventDefault(); openLightbox(img.src, img.alt); }
+    if (img) { e.preventDefault(); openLightbox(img, img.alt); return; }
+    // Mermaid 다이어그램 클릭
+    var mermaid = e.target.closest('.mermaid');
+    if (mermaid && mermaid.querySelector('svg')) {
+      e.preventDefault();
+      var title = mermaid.closest('.md-content') ? '다이어그램 (클릭하여 닫기)' : '';
+      openLightbox(mermaid, title);
+    }
   });
 
-  // 닫기: 오버레이/X 클릭, ESC 키
   overlay.addEventListener('click', function(e) {
-    if (e.target === overlay || e.target === lbClose || e.target.closest('.ef-lightbox-close')) closeLightbox();
+    if (e.target === overlay || e.target.closest('.ef-lightbox-close')) closeLightbox();
   });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 });
